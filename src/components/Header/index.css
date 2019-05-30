@@ -1,0 +1,33 @@
+.navbar-nav a {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  color: #000;
+}
+
+.navbar-nav a:hover {
+  text-decoration: none;
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row-reverse;
+    text-align: end;
+    padding-top: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: 3rem;
+  }
+
+  .navbar-nav a {
+    font-size: 11px;
+    font-weight: 500;
+  }
+}
