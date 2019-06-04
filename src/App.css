@@ -1,5 +1,9 @@
-@media (min-width: 768px) {
+.App {
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
   .App {
-    border: solid 20px;
+    margin-top: 55px;
   }
 }

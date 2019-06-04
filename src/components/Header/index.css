@@ -1,33 +1,20 @@
-.navbar-nav a {
-  margin-right: 1rem;
-  margin-left: 1rem;
-  color: #000;
+.header-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px 0px 40px;
 }
 
-.navbar-nav a:hover {
-  text-decoration: none;
+.header-info p {
+  margin-bottom: 0;
 }
 
-.navbar-light .navbar-toggler {
-  border: none;
-  outline: none;
+.header-title {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: row-reverse;
-    text-align: end;
-    padding-top: 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .navbar {
-    padding: 3rem;
-  }
-
-  .navbar-nav a {
-    font-size: 11px;
-    font-weight: 500;
+  .header {
+    display: none;
   }
 }

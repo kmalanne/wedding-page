@@ -1,8 +1,9 @@
 import React from 'react';
+import hero from '../../resources/hero.jpeg';
 import './index.css';
 
 export const Home = () => (
   <div className="home">
-    <h1>Home</h1>
+    <img src={hero} />
   </div>
 );

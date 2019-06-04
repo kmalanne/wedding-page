@@ -1,0 +1,47 @@
+.navbar-collapse {
+  justify-content: center;
+}
+
+.navbar-nav a {
+  color: #000;
+}
+
+.navbar-nav a:hover {
+  text-decoration: none;
+}
+
+.navbar-light .navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    background: rgba(255, 255, 255, 0.95);
+    flex-direction: row-reverse;
+    text-align: end;
+  }
+
+  .navbar-nav a {
+    color: rgba(0, 0, 0, 0.5);
+    padding-right: 13px;
+    margin-top: 5px;
+  }
+  .navbar-nav a:hover {
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-nav a {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
