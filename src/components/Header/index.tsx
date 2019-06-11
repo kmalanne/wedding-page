@@ -1,7 +1,7 @@
-import React, { SFC } from 'react';
+import React from 'react';
 import './index.css';
 
-export const Header: SFC = () => {
+export const Header = () => {
   return (
     <div className="header">
       <div className="header-info">

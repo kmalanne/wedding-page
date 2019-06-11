@@ -4,6 +4,6 @@ import './index.css';
 
 export const Home = () => (
   <div className="home">
-    <img src={hero} />
+    <img alt="hero" src={hero} />
   </div>
 );

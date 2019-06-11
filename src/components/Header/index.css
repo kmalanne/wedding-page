@@ -10,11 +10,19 @@
 
 .header-title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
-  .header {
+  .header-info {
     display: none;
+  }
+
+  .header-title {
+    position: absolute;
+    z-index: 9999;
+    left: 10px;
+    top: 15px;
+    font-size: 25px;
   }
 }
