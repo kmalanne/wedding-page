@@ -44,4 +44,8 @@
     font-size: 13px;
     font-weight: 500;
   }
+
+  .navbar-nav a:hover {
+    color: rgba(0, 0, 0, 0.7);
+  }
 }

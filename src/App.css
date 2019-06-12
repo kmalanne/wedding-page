@@ -7,3 +7,9 @@
     margin-top: 55px;
   }
 }
+
+@media (max-width: 768px) {
+  .App {
+    margin-top: 55px;
+  }
+}

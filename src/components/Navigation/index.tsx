@@ -35,14 +35,14 @@ export class Navigation extends Component<{}, NavigationState> {
             <Link onClick={this.onToggle} to="/">
               KOTI
             </Link>
-            <Link onClick={this.onToggle} to="/timetable">
-              AIKATAULU
-            </Link>
-            <Link onClick={this.onToggle} to="/info">
-              OHJEITA
-            </Link>
             <Link onClick={this.onToggle} to="/rsvp">
               RSVP
+            </Link>
+            <Link onClick={this.onToggle} to="/info">
+              HÄÄINFO
+            </Link>
+            <Link onClick={this.onToggle} to="/contact">
+              YHTEYSTIEDOT
             </Link>
           </Nav>
         </Navbar.Collapse>
