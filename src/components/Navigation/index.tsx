@@ -33,7 +33,7 @@ export class Navigation extends Component<{}, NavigationState> {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <Link onClick={this.onToggle} to="/">
-              KOTI
+              KUTSU
             </Link>
             <Link onClick={this.onToggle} to="/rsvp">
               RSVP

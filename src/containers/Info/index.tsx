@@ -40,11 +40,27 @@ export const Info = () => (
       Meille on tärkeintä että saavut jakamaan tämän päivän kanssamme, mutta jos
       haluat muistaa jotenkin niin voit tukea meidän häämatkaamme Japaniin
       haluamallasi rahasummalla tilille: <strong>FIxx xxxx xxxx xxxx xx</strong>
+      .
     </p>
     <h2>Valokuvaus</h2>
     <p>
-      Paikalla on koko päivän valokuvaaja, joka ikuistaa kaikki hetket, joten
-      oman kameran voi jättää kotiin.
+      Paikalla on koko päivän valokuvaaja ikuistamassa kaikki tärkeät hetket,
+      joten voit jättää oman kameran kotiin. Jos otat omia kuvia, niin jaathan
+      ne meidänkin kanssamme.
+    </p>
+    <h2>Majoittuminen</h2>
+    <p>
+      Mikäli ajattelit majoittua häiden aikaan Helsingissä hotellissa,
+      suosittelemme tekemään varauksen mahdollisimman aikaisin. Vuoden 2020
+      Flow-festivaalit osuvat samalle viikonlopulle ja voivat aiheuttaa
+      majoitusongelmia.
+    </p>
+    <h2>Ilmoittautuminen</h2>
+    <p>
+      Ilmoitathan tulostasi <a href="rsvp">RSVP</a>:n kautta xx.xx.20xx
+      mennessä. Kerro samalla mahdollisista allergioista. Jos ilmoittautuminen
+      sivujen kautta ei onnistu, ilmoittaudu tekstiviestillä/sähköpostilla
+      hääparille. Yhteystiedot löytyvät <a href="contact">täältä</a>.
     </p>
   </div>
 );

@@ -1,8 +1,9 @@
 import React from 'react';
+import { SignUpForm } from '../../components/SignUpForm';
 import './index.css';
 
 export const RSVP = () => (
   <div className="rsvp">
-    <h1>RSVP</h1>
+    <SignUpForm />
   </div>
 );
