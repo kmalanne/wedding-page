@@ -6,3 +6,14 @@
 .signup-container form {
   min-width: 415px;
 }
+
+.signup-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.signup-success p {
+  max-width: 415px;
+}
