@@ -15,8 +15,18 @@
   margin: 20px 20px 0px 20px;
 }
 
+.contact-email-row {
+  display: flex;
+}
+
 @media (max-width: 768px) {
   .contact {
-    margin: 80px 30px 0px 30px;
+    margin: 90px 30px 0px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-information {
+    flex-direction: column;
   }
 }
