@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { sendEmail } from '../../utils/email';
 import './index.css';
 
 export interface SignUpState {
   avec: boolean;
   option: string;
   formSubmitted: boolean;
+  submitResult: boolean;
+  sending: boolean;
 }
 
 const initialState = {
   avec: false,
   option: 'a',
   formSubmitted: false,
+  submitResult: true,
+  sending: false,
 };
 type State = Readonly<typeof initialState>;
 
@@ -41,36 +46,66 @@ export class SignUpForm extends Component<{}, SignUpState> {
     this.setState({ option: 'b' });
   };
 
-  onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as any;
     const participating = target.radioButtonA.checked;
     const name = target.mainName.value;
-    const allergies = target.mainAllergies.value;
-    const avecParticipating = target.avec.checked;
-    const avecName = target.avecName.value;
-    const avecAllergies = target.avecAllergies.value;
+    const allergies = participating ? target.mainAllergies.value : '';
+    const avecParticipating = participating ? target.avec.checked : false;
+    const avecName = avecParticipating ? target.avecName.value : '';
+    const avecAllergies = avecParticipating ? target.avecAllergies.value : '';
 
-    const emailContent = `
-      ${name} ${participating ? 'OSALLISTUU' : 'EI OSALLISTU'}
-      Allergiat: ${allergies}
-      Avec ${avecName} ${avecParticipating ? 'OSALLISTUU' : 'EI OSALLISTU'}
-      Avec allergiat: ${avecAllergies}
-    `;
+    let emailMessage = '';
+    if (participating) {
+      emailMessage += `
+      ${name}: OSALLISTUU,
+      Allergiat: ${allergies} `;
 
-    //localStorage.setItem(localStorageKey, "TRUE");
+      emailMessage += avecParticipating
+        ? `Avec ${avecName}: OSALLISTUU, Avec allergiat: ${avecAllergies}`
+        : 'Avec EI OSALLISTU';
+    } else {
+      emailMessage = `${name} EI OSALLISTU`;
+    }
+
+    let result = true;
+    try {
+      this.setState({
+        sending: true,
+      });
+      await sendEmail(emailMessage);
+    } catch (error) {
+      result = false;
+    }
+    //localStorage.setItem(localStorageKey, result ? "TRUE" : "FALSE");
 
     this.setState({
       formSubmitted: true,
+      submitResult: result,
+      sending: false,
     });
   };
 
   render() {
-    const { avec, option, formSubmitted } = this.state;
+    const { avec, option, formSubmitted, submitResult, sending } = this.state;
+
+    const submitButtonText = sending ? 'Lähettää...' : 'Lähetä';
 
     if (formSubmitted) {
+      if (!submitResult) {
+        return (
+          <div className="signup-result signup-failure">
+            <p>
+              Ilmoittautumisessa tapahtui virhe! Yritä uudelleen tai ilmottaudu
+              suoraan sähköpostilla. Osoitteen löydät Yhteystiedot -sivulta.
+            </p>
+          </div>
+        );
+      }
+
       return (
-        <div className="signup-success">
+        <div className="signup-result">
           <p>
             Kiitos ilmoittautumisestasi! Jos ilmoittautumiseesi tulee muutoksia,
             ilmoitathan siitä meille sähköpostilla tai tekstiviestillä
@@ -155,7 +190,7 @@ export class SignUpForm extends Component<{}, SignUpState> {
             </>
           )}
           <Button variant="primary" type="submit">
-            Lähetä
+            {submitButtonText}
           </Button>
         </Form>
       </div>

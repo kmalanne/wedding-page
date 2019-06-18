@@ -7,13 +7,17 @@
   min-width: 415px;
 }
 
-.signup-success {
+.signup-result {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.signup-success p {
+.signup-result p {
+  max-width: 415px;
+}
+
+.signup-result.signup-failure {
   max-width: 415px;
 }

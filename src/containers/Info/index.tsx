@@ -52,7 +52,7 @@ export const Info = () => (
     <p>
       Mikäli ajattelit majoittua häiden aikaan Helsingissä hotellissa,
       suosittelemme tekemään varauksen mahdollisimman aikaisin. Vuoden 2020
-      Flow-festivaalit osuvat samalle viikonlopulle ja voivat aiheuttaa
+      Flow-festivaalit saattavat osua samalle viikonlopulle ja voivat aiheuttaa
       majoitusongelmia.
     </p>
     <h2>Ilmoittautuminen</h2>
