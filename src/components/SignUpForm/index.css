@@ -4,7 +4,7 @@
 }
 
 .signup-container form {
-  min-width: 415px;
+  margin-bottom: 60px;
 }
 
 .signup-result {
@@ -15,9 +15,15 @@
 }
 
 .signup-result p {
-  max-width: 415px;
+  max-width: 300px;
 }
 
 .signup-result.signup-failure {
-  max-width: 415px;
+  max-width: 300px;
+}
+
+@media (min-width: 900px) {
+  .signup-container form {
+    min-width: 415px;
+  }
 }

@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { LoginForm } from '../LoginForm';
 import { sendEmail } from '../../utils/email';
 import './index.css';
 
 export interface SignUpState {
   avec: boolean;
-  option: string;
+  option: boolean;
+  optionAvec: boolean;
   formSubmitted: boolean;
+  loginResult: boolean;
   submitResult: boolean;
   sending: boolean;
 }
 
 const initialState = {
   avec: false,
-  option: 'a',
+  option: true,
+  optionAvec: true,
+  loginResult: false,
   formSubmitted: false,
   submitResult: true,
   sending: false,
@@ -38,12 +43,24 @@ export class SignUpForm extends Component<{}, SignUpState> {
     this.setState({ avec: !this.state.avec });
   };
 
-  onChangeOptionA = () => {
-    this.setState({ option: 'a' });
+  onChangeOption = (option: boolean) => {
+    this.setState({ option });
   };
 
-  onChangeOptionB = () => {
-    this.setState({ option: 'b' });
+  onChangeOptionAvec = (optionAvec: boolean) => {
+    this.setState({ optionAvec });
+  };
+
+  onLogin = (code: string) => {
+    const singleCode = process.env.REACT_APP_SINGLE_CODE;
+    const avecCode = process.env.REACT_APP_AVEC_CODE;
+
+    if (code === singleCode || code === avecCode) {
+      this.setState({
+        loginResult: true,
+        avec: code === avecCode,
+      });
+    }
   };
 
   onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -52,21 +69,23 @@ export class SignUpForm extends Component<{}, SignUpState> {
     const participating = target.radioButtonA.checked;
     const name = target.mainName.value;
     const allergies = participating ? target.mainAllergies.value : '';
-    const avecParticipating = participating ? target.avec.checked : false;
-    const avecName = avecParticipating ? target.avecName.value : '';
+    const avecParticipating = this.state.avec
+      ? target.radioButtonAavec.checked
+      : false;
+    const avecName = target.avecName.value;
     const avecAllergies = avecParticipating ? target.avecAllergies.value : '';
 
     let emailMessage = '';
     if (participating) {
-      emailMessage += `
-      ${name}: OSALLISTUU,
-      Allergiat: ${allergies} `;
-
-      emailMessage += avecParticipating
-        ? `Avec ${avecName}: OSALLISTUU, Avec allergiat: ${avecAllergies}`
-        : 'Avec EI OSALLISTU';
+      emailMessage += `${name} OSALLISTUU ${allergies} // `;
     } else {
-      emailMessage = `${name} EI OSALLISTU`;
+      emailMessage += `${name} EI OSALLISTU // `;
+    }
+
+    if (avecParticipating) {
+      emailMessage += `AVEC ${avecName} OSALLISTUU ${avecAllergies}`;
+    } else {
+      emailMessage += `AVEC ${avecName} EI OSALLISTU`;
     }
 
     let result = true;
@@ -88,7 +107,15 @@ export class SignUpForm extends Component<{}, SignUpState> {
   };
 
   render() {
-    const { avec, option, formSubmitted, submitResult, sending } = this.state;
+    const {
+      avec,
+      option,
+      optionAvec,
+      formSubmitted,
+      loginResult,
+      submitResult,
+      sending,
+    } = this.state;
 
     const submitButtonText = sending ? 'Lähettää...' : 'Lähetä';
 
@@ -115,6 +142,14 @@ export class SignUpForm extends Component<{}, SignUpState> {
       );
     }
 
+    if (!loginResult) {
+      return (
+        <div className="signup-container">
+          <LoginForm onLogin={code => this.onLogin(code)} />
+        </div>
+      );
+    }
+
     return (
       <div className="signup-container">
         <Form onSubmit={this.onSubmit}>
@@ -124,15 +159,15 @@ export class SignUpForm extends Component<{}, SignUpState> {
               type="radio"
               name="radioButtonA"
               label="Osallistun"
-              checked={option === 'a'}
-              onChange={this.onChangeOptionA}
+              checked={option}
+              onChange={() => this.onChangeOption(true)}
             />
             <Form.Check
               type="radio"
               name="radioButtonB"
               label="En osallistu"
-              checked={option === 'b'}
-              onChange={this.onChangeOptionB}
+              checked={!option}
+              onChange={() => this.onChangeOption(false)}
             />
           </Form.Group>
           <Form.Group controlId="inputName1">
@@ -144,48 +179,54 @@ export class SignUpForm extends Component<{}, SignUpState> {
               autoComplete="off"
             />
           </Form.Group>
-          {option === 'a' && (
+          {option && (
+            <Form.Group controlId="inputAllergies1">
+              <Form.Label>Allergiat:</Form.Label>
+              <Form.Control
+                type="text"
+                name="mainAllergies"
+                placeholder=""
+                autoComplete="off"
+              />
+            </Form.Group>
+          )}
+          {avec && (
             <>
-              <Form.Group controlId="inputAllergies1">
-                <Form.Label>Allergiat:</Form.Label>
+              <Form.Group controlId="rbAvecParticipation">
+                <Form.Check
+                  type="radio"
+                  name="radioButtonAavec"
+                  label="Avec osallistuu"
+                  checked={optionAvec}
+                  onChange={() => this.onChangeOptionAvec(true)}
+                />
+                <Form.Check
+                  type="radio"
+                  name="radioButtonBavec"
+                  label="Avec ei osallistu"
+                  checked={!optionAvec}
+                  onChange={() => this.onChangeOptionAvec(false)}
+                />
+              </Form.Group>
+              <Form.Group controlId="inputName2">
+                <Form.Label>Avecin nimi:</Form.Label>
                 <Form.Control
                   type="text"
-                  name="mainAllergies"
-                  placeholder=""
+                  name="avecName"
+                  placeholder="Etunimi Sukunimi"
                   autoComplete="off"
                 />
               </Form.Group>
-
-              <Form.Group controlId="checkAvec">
-                <Form.Check
-                  type="checkbox"
-                  name="avec"
-                  label="Avec osallistuu (täytä vain, jos kutsu kahdelle)"
-                  onChange={this.onChangeAvec}
-                />
-              </Form.Group>
-
-              {avec && (
-                <>
-                  <Form.Group controlId="inputName2">
-                    <Form.Label>Avecin nimi:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="avecName"
-                      placeholder="Etunimi Sukunimi"
-                      autoComplete="off"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="inputAllergies2">
-                    <Form.Label>Avecin allergiat:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="avecAllergies"
-                      placeholder=""
-                      autoComplete="off"
-                    />
-                  </Form.Group>
-                </>
+              {optionAvec && (
+                <Form.Group controlId="inputAllergies2">
+                  <Form.Label>Avecin allergiat:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="avecAllergies"
+                    placeholder=""
+                    autoComplete="off"
+                  />
+                </Form.Group>
               )}
             </>
           )}

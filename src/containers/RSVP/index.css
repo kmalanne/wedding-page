@@ -9,6 +9,6 @@
 
 @media (max-width: 768px) {
   .rsvp {
-    margin-top: 90px;
+    margin: 90px 40px 40px 40px;
   }
 }

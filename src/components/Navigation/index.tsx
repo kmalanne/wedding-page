@@ -29,6 +29,7 @@ export class Navigation extends Component<{}, NavigationState> {
         onToggle={this.onToggle}
         expand="md"
       >
+        <h1 className="brand">Kai-Mikael &amp; Ainolaura</h1>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>

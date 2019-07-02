@@ -19,10 +19,6 @@
   }
 
   .header-title {
-    position: absolute;
-    z-index: 9999;
-    left: 10px;
-    top: 15px;
-    font-size: 25px;
+    display: none;
   }
 }

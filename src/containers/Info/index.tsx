@@ -31,7 +31,8 @@ export const Info = () => (
       illallisesta, juomasta ja hyvästä seurasta ravintola Garden by Olo:ssa
       katetulla sisäpihalla aina klo 01:00 saakka. Ruokalajien kanssa
       tarjoillaan viiniä, mutta halutessasi voit ostaa omakustanteisesti Olon
-      tarjoamia drinkkejä mikäli tunnet itsesi janoisemmaksi.
+      tarjoamia drinkkejä mikäli tunnet itsesi janoisemmaksi. Juhlat ovat
+      luonteensa vuoksi K18.
     </p>
     <h2>Pukukoodi</h2>
     <p>Pukukoodina toimii kesäinen juhlava pukeutuminen.</p>
@@ -57,10 +58,10 @@ export const Info = () => (
     </p>
     <h2>Ilmoittautuminen</h2>
     <p>
-      Ilmoitathan tulostasi <a href="rsvp">RSVP</a>:n kautta xx.xx.20xx
-      mennessä. Kerro samalla mahdollisista allergioista. Jos ilmoittautuminen
-      sivujen kautta ei onnistu, ilmoittaudu tekstiviestillä/sähköpostilla
-      hääparille. Yhteystiedot löytyvät <a href="contact">täältä</a>.
+      Ilmoitathan tulostasi <a href="rsvp">RSVP</a>:n kautta 1.1.2020 mennessä.
+      Kerro samalla mahdollisista allergioista. Jos ilmoittautuminen sivujen
+      kautta ei onnistu, ilmoittaudu tekstiviestillä/sähköpostilla hääparille.
+      Yhteystiedot löytyvät <a href="contact">täältä</a>.
     </p>
   </div>
 );

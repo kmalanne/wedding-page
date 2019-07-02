@@ -27,10 +27,6 @@ export interface MapProps {
   marker?: Marker;
 }
 
-function onMapClick(e: any) {
-  console.log('You clicked the map at ' + e.latlng);
-}
-
 export const Map = (props: MapProps) => {
   const element = useRef(null);
 
@@ -46,8 +42,6 @@ export const Map = (props: MapProps) => {
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       }
     ).addTo(map);
-
-    map.on('click', onMapClick);
 
     if (marker) {
       Leaflet.marker([marker.lat, marker.long]).addTo(map);

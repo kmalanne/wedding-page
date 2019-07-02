@@ -48,4 +48,18 @@
   .navbar-nav a:hover {
     color: rgba(0, 0, 0, 0.7);
   }
+
+  .brand {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand {
+    position: absolute;
+    z-index: 9999;
+    left: 10px;
+    top: 15px;
+    font-size: 20px;
+  }
 }
