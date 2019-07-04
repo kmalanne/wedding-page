@@ -16,7 +16,7 @@ export class Navigation extends Component<{}, NavigationState> {
   readonly state: State = initialState;
 
   onToggle = () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 767) {
       this.setState({ expanded: !this.state.expanded });
     }
   };

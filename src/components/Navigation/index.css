@@ -15,7 +15,7 @@
   outline: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -35,6 +35,14 @@
   .navbar-nav a:hover {
     color: rgba(0, 0, 0, 0.7);
   }
+
+  .brand {
+    position: absolute;
+    z-index: 9999;
+    left: 10px;
+    top: 15px;
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -51,15 +59,5 @@
 
   .brand {
     display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .brand {
-    position: absolute;
-    z-index: 9999;
-    left: 10px;
-    top: 15px;
-    font-size: 20px;
   }
 }
