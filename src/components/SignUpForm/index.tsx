@@ -39,10 +39,6 @@ export class SignUpForm extends Component<{}, SignUpState> {
     };
   }
 
-  onChangeAvec = () => {
-    this.setState({ avec: !this.state.avec });
-  };
-
   onChangeOption = (option: boolean) => {
     this.setState({ option });
   };
@@ -64,28 +60,30 @@ export class SignUpForm extends Component<{}, SignUpState> {
   };
 
   onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const { avec } = this.state;
+
     e.preventDefault();
     const target = e.target as any;
     const participating = target.radioButtonA.checked;
     const name = target.mainName.value;
     const allergies = participating ? target.mainAllergies.value : '';
-    const avecParticipating = this.state.avec
-      ? target.radioButtonAavec.checked
-      : false;
-    const avecName = target.avecName.value;
+    const avecParticipating = avec ? target.radioButtonAavec.checked : false;
+    const avecName = avec ? target.avecName.value : '';
     const avecAllergies = avecParticipating ? target.avecAllergies.value : '';
 
     let emailMessage = '';
     if (participating) {
-      emailMessage += `${name} OSALLISTUU ${allergies} // `;
+      emailMessage += `${name} OSALLISTUU ${allergies}`;
     } else {
-      emailMessage += `${name} EI OSALLISTU // `;
+      emailMessage += `${name} EI OSALLISTU`;
     }
 
-    if (avecParticipating) {
-      emailMessage += `AVEC ${avecName} OSALLISTUU ${avecAllergies}`;
-    } else {
-      emailMessage += `AVEC ${avecName} EI OSALLISTU`;
+    if (avec) {
+      if (avecParticipating) {
+        emailMessage += ` - AVEC ${avecName} OSALLISTUU ${avecAllergies}`;
+      } else {
+        emailMessage += ` - AVEC ${avecName} EI OSALLISTU`;
+      }
     }
 
     let result = true;
@@ -97,7 +95,7 @@ export class SignUpForm extends Component<{}, SignUpState> {
     } catch (error) {
       result = false;
     }
-    //localStorage.setItem(localStorageKey, result ? "TRUE" : "FALSE");
+    localStorage.setItem(localStorageKey, result ? 'TRUE' : 'FALSE');
 
     this.setState({
       formSubmitted: true,
