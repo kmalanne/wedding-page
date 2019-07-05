@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   return (
     <div className="header">
       <div className="header-info">

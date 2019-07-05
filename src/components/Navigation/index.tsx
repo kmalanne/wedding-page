@@ -1,53 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import './index.css';
 
-export interface NavigationState {
-  expanded: boolean;
-}
+export const Navigation: React.FC = () => {
+  const [expanded, setExpanded] = React.useState(false);
 
-const initialState = {
-  expanded: false,
-};
-type State = Readonly<typeof initialState>;
-
-export class Navigation extends Component<{}, NavigationState> {
-  readonly state: State = initialState;
-
-  onToggle = () => {
+  const onToggle = () => {
     if (window.innerWidth <= 767) {
-      this.setState({ expanded: !this.state.expanded });
+      setExpanded(!expanded);
     }
   };
 
-  render() {
-    return (
+  return (
+    <>
       <Navbar
         collapseOnSelect
-        expanded={this.state.expanded}
-        onToggle={this.onToggle}
+        expanded={expanded}
+        onToggle={onToggle}
         expand="md"
       >
         <h1 className="brand">Kai-Mikael &amp; Ainolaura</h1>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
-            <Link onClick={this.onToggle} to="/">
+            <Link onClick={onToggle} to="/">
               KUTSU
             </Link>
-            <Link onClick={this.onToggle} to="/rsvp">
+            <Link onClick={onToggle} to="/rsvp">
               RSVP
             </Link>
-            <Link onClick={this.onToggle} to="/info">
+            <Link onClick={onToggle} to="/info">
               HÄÄINFO
             </Link>
-            <Link onClick={this.onToggle} to="/contact">
+            <Link onClick={onToggle} to="/contact">
               YHTEYSTIEDOT
             </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    );
-  }
-}
+    </>
+  );
+};
