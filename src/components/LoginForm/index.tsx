@@ -12,8 +12,8 @@ export const LoginForm = (props: LoginFormProps) => {
     e.preventDefault();
     const target = e.target as any;
 
-    const code = target.code.value;
-    onLogin(code);
+    const code = target.code.value as string;
+    onLogin(code.toUpperCase());
   };
 
   return (
@@ -26,6 +26,7 @@ export const LoginForm = (props: LoginFormProps) => {
             name="code"
             placeholder="Syötä koodisi"
             autoComplete="off"
+            style={{ textTransform: 'uppercase' }}
           />
         </Form.Group>
 
