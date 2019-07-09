@@ -14,6 +14,7 @@ export const SignUpForm: React.FC = () => {
     localStorage.getItem(localStorageKey) === 'TRUE'
   );
   const [loginResult, setLoginResult] = React.useState(false);
+  const [validated, setValidated] = React.useState(false);
   const [submitResult, setSubmitResult] = React.useState(true);
   const [sending, setSending] = React.useState(false);
 
@@ -39,16 +40,23 @@ export const SignUpForm: React.FC = () => {
     }
   };
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const target = e.target as any;
-    const name = target.mainName.value;
-    const allergies = participating ? target.mainAllergies.value : '';
-    const nonAlcohol = participating ? target.mainNonAlcohol.checked : false;
-    const avecName = avec ? target.avecName.value : '';
-    const avecAllergies = avecParticipating ? target.avecAllergies.value : '';
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const form = event.currentTarget as HTMLFormElement;
+
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      setValidated(true);
+      return;
+    }
+
+    const name = form.mainName.value;
+    const allergies = participating ? form.mainAllergies.value : '';
+    const nonAlcohol = participating ? form.mainNonAlcohol.checked : false;
+    const avecName = avecParticipating ? form.avecName.value : '';
+    const avecAllergies = avecParticipating ? form.avecAllergies.value : '';
     const avecNonAlcohol = avecParticipating
-      ? target.avecNonAlcohol.checked
+      ? form.avecNonAlcohol.checked
       : false;
 
     let emailMessage = '';
@@ -66,7 +74,7 @@ export const SignUpForm: React.FC = () => {
           avecNonAlcohol ? ' ALKOHOLITON' : ''
         }`;
       } else {
-        emailMessage += ` & AVEC ${avecName} EI OSALLISTU`;
+        emailMessage += ` & AVEC EI OSALLISTU`;
       }
     }
 
@@ -119,7 +127,7 @@ export const SignUpForm: React.FC = () => {
 
   return (
     <div className="signup-container">
-      <Form onSubmit={onSubmit}>
+      <Form noValidate validated={validated} onSubmit={onSubmit}>
         <input type="hidden" value="prayer" />
         <Form.Group controlId="rbParticipation">
           <Form.Check
@@ -144,7 +152,11 @@ export const SignUpForm: React.FC = () => {
             name="mainName"
             placeholder="Etunimi Sukunimi"
             autoComplete="off"
+            required
           />
+          <Form.Control.Feedback type="invalid">
+            Syötä nimesi.
+          </Form.Control.Feedback>
         </Form.Group>
         {participating && (
           <>
@@ -184,17 +196,21 @@ export const SignUpForm: React.FC = () => {
                 onChange={() => onChangeOptionAvec(false)}
               />
             </Form.Group>
-            <Form.Group controlId="inputName2">
-              <Form.Label>Avecin nimi:</Form.Label>
-              <Form.Control
-                type="text"
-                name="avecName"
-                placeholder="Etunimi Sukunimi"
-                autoComplete="off"
-              />
-            </Form.Group>
             {avecParticipating && (
               <>
+                <Form.Group controlId="inputName2">
+                  <Form.Label>Avecin nimi:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="avecName"
+                    placeholder="Etunimi Sukunimi"
+                    autoComplete="off"
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Syötä avecin nimi.
+                  </Form.Control.Feedback>
+                </Form.Group>
                 <Form.Group controlId="inputAllergies2">
                   <Form.Label>Avecin allergiat:</Form.Label>
                   <Form.Control
@@ -215,7 +231,7 @@ export const SignUpForm: React.FC = () => {
             )}
           </>
         )}
-        <Button variant="primary" type="submit">
+        <Button block variant="primary" type="submit">
           {submitButtonText}
         </Button>
       </Form>
