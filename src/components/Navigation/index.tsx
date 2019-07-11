@@ -20,7 +20,7 @@ export const Navigation: React.FC = () => {
         onToggle={onToggle}
         expand="md"
       >
-        <h1 className="brand">Kai-Mikael &amp; Ainolaura</h1>
+        <h1 className="brand">Ainolaura &amp; Kai-Mikael</h1>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>

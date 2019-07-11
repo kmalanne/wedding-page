@@ -20,7 +20,7 @@ export const Home = () => (
         ja ilmoittautumislomakkeen.
       </p>
       <br />
-      <p>T: Kai-Mikael &amp; Ainolaura</p>
+      <p>T: Ainolaura &amp; Kai-Mikael</p>
     </div>
   </div>
 );

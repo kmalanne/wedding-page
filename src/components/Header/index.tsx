@@ -6,9 +6,9 @@ export const Header: React.FC = () => {
     <div className="header">
       <div className="header-info">
         <p>Helsingissä 8.8.2020</p>
-        <p>#kaitsujaaino</p>
+        <p>#ainojakaitsu</p>
       </div>
-      <h1 className="header-title">Kai-Mikael &amp; Ainolaura</h1>
+      <h1 className="header-title">Ainolaura &amp; Kai-Mikael</h1>
     </div>
   );
 };

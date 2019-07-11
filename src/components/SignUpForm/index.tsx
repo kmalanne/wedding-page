@@ -41,10 +41,11 @@ export const SignUpForm: React.FC = () => {
   };
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const form = event.currentTarget as HTMLFormElement;
 
     if (form.checkValidity() === false) {
-      event.preventDefault();
       event.stopPropagation();
       setValidated(true);
       return;
