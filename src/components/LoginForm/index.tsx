@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 export interface LoginFormProps {
