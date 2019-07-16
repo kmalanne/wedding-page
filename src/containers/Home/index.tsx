@@ -12,7 +12,7 @@ export const Home = () => (
       <p>
         Tervetuloa juhlimaan kanssamme kun sanomme toisillemme tahdon lauantaina
         8.8.2020 Helsingin Kallion kirkossa. Vihkimisen jälkeen juhlat jatkuvat
-        ravintola Garden by Olo:ssa. RSVP 1.1.2020 mennessä (K18).
+        ravintola Garden by Olo:ssa. RSVP 1.6.2020 mennessä (K18).
       </p>
       <br />
       <p>

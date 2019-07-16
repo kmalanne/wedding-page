@@ -11,5 +11,6 @@ export const Routes = () => (
     <Route path="/contact" exact component={Contact} />
     <Route path="/info" exact component={Info} />
     <Route path="/rsvp" exact component={RSVP} />
+    <Route component={Home} />
   </Switch>
 );

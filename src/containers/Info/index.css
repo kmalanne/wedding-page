@@ -55,10 +55,19 @@
     margin-bottom: 90px;
   }
 
+  .info h2 {
+    margin-left: 20px;
+  }
+
+  .info p {
+    margin: 0px 40px 30px 40px;
+  }
+
   .map-tile {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
   }
 
   .map-tile .map {
@@ -66,11 +75,8 @@
     height: 300px;
   }
 
-  .info h2 {
-    margin-left: 20px;
-  }
-
-  .info p {
-    margin: 0px 40px 30px 40px;
+  .map-tile p {
+    margin-bottom: 10px;
+    font-size: 15px;
   }
 }
