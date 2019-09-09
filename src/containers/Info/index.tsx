@@ -63,13 +63,11 @@ export const Info = () => {
       <h2>Majoittuminen</h2>
       <p>
         Mikäli ajattelit majoittua häiden aikaan Helsingissä hotellissa,
-        suosittelemme tekemään varauksen mahdollisimman aikaisin. Vuoden 2020
-        Flow-festivaalit saattavat osua samalle viikonlopulle ja voivat
-        aiheuttaa majoitusongelmia.
+        suosittelemme tekemään varauksen mahdollisimman aikaisin. Juhlapaikan ympäriltä löytyy monia hyviä hotelleja, joista valita.
       </p>
       <h2>Ilmoittautuminen</h2>
       <p>
-        Ilmoitathan tulostasi <a href="rsvp">RSVP</a>:n kautta 1.6.2020
+        Ilmoitathan tulostasi <a href="rsvp">RSVP</a>:n kautta 1.4.2020
         mennessä. Kerro samalla mahdollisista allergioista. Jos ilmoittautuminen
         sivujen kautta ei onnistu, ilmoittaudu tekstiviestillä/sähköpostilla
         hääparille. Yhteystiedot löytyvät <a href="contact">täältä</a>.
