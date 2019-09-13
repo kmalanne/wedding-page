@@ -3,22 +3,8 @@
 }
 
 .home-container {
-  position: relative;
-  text-align: center;
-}
-
-.home-container img {
-  opacity: 0.8;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.home-invitation {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-invitation h1 {
@@ -34,16 +20,49 @@
   .home {
     margin-bottom: 40px;
   }
+
+  .home-container {
+    align-items: center;
+  }
+
+  .home-img {
+    margin-bottom: 40px;
+  }
+
+  .home-img img {
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px #333;
+  }
+
+  .home-invitation h1 {
+    text-align: center;
+  }
+
+  .home-invitation p {
+    padding: 0 200px;
+  }
 }
 
 @media (max-width: 768px) {
   .home-container {
     overflow-x: hidden;
+    position: relative;
+    text-align: center;
   }
 
   .home-container img {
     object-fit: cover;
     width: auto;
     height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .home-invitation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    max-width: 500px;
   }
 }

@@ -41,7 +41,7 @@ export const Info = () => {
       <h2>Juhlan kulku</h2>
       <p>
         Tarkoituksena on viettää ikimuistoista juhlaa nauttien viiden ruokalajin
-        illallisesta, juomasta ja hyvästä seurasta ravintola Garden by Olo:ssa
+        illallisesta, juomasta ja hyvästä seurasta ravintola Garden by Olon
         katetulla sisäpihalla aina klo 01:00 saakka. Ruokalajien kanssa
         tarjoillaan viiniä, mutta halutessasi voit ostaa omakustanteisesti Olon
         tarjoamia drinkkejä mikäli tunnet itsesi janoisemmaksi. Juhlat ovat K18.
@@ -63,7 +63,8 @@ export const Info = () => {
       <h2>Majoittuminen</h2>
       <p>
         Mikäli ajattelit majoittua häiden aikaan Helsingissä hotellissa,
-        suosittelemme tekemään varauksen mahdollisimman aikaisin. Juhlapaikan ympäriltä löytyy monia hyviä hotelleja, joista valita.
+        suosittelemme tekemään varauksen mahdollisimman aikaisin. Juhlapaikan
+        ympäriltä löytyy monia hyviä hotelleja, joista valita.
       </p>
       <h2>Ilmoittautuminen</h2>
       <p>
