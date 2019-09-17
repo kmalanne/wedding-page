@@ -30,7 +30,10 @@
   }
 
   .home-img img {
-    border-radius: 50px;
+    object-fit: cover;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
     box-shadow: 1px 1px 5px #333;
   }
 
@@ -39,7 +42,7 @@
   }
 
   .home-invitation p {
-    padding: 0 200px;
+    padding: 0 300px;
   }
 }
 

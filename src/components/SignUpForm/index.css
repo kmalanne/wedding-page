@@ -7,6 +7,24 @@
   margin-bottom: 60px;
 }
 
+.signup-container .btn-primary {
+  background-color: transparent;
+  color: #212529 !important;
+  border: none !important;
+}
+
+.signup-container .btn-primary:active,
+.signup-container .btn-primary:focus {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.signup-container .btn-primary:hover {
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
 .signup-result {
   display: flex;
   align-items: center;
